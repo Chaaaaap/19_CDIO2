@@ -30,7 +30,7 @@ public class CirBuf {
 	}
 
 	public synchronized void put(char c) { // vent til det er muligt og put s� c
-											// i ringbufferen
+		// i ringbufferen
 		while (isFull()) {
 			try {
 				wait();
@@ -71,7 +71,7 @@ public class CirBuf {
 		String temp = "(Bufferlength = " + length + ")";
 		temp = temp + " Tail = " + tail1 + " Head = " + head1;
 		temp = temp + " IsEmpty = " + isEmpty() + " IsFull = " + isFull();
-		
+
 		temp = temp + (char) (13) + " " + (char) (10);
 		for (int i = 0; i < cb.length; i++) 
 			temp = temp + " " + i;
