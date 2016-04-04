@@ -31,7 +31,16 @@ public class VsCon {
 		try{
 			while (!(inline = instream.readLine().toUpperCase()).isEmpty()){ //her ventes på input
 				if (inline.startsWith("RM")){						
-					// ikke implimenteret
+					indtDisp=(inline.substring(7, inline.length()));
+					String[] array = indtDisp.split(" ");
+					if(array[0].equals("8") && array.length == 4) {
+						outstream.writeBytes("RM20 A");
+						
+					} else { 
+						printmenu();
+						outstream.writeBytes("ES"+"\r\n");
+					}
+					
 
 				}
 				else if (inline.startsWith("D")){
@@ -66,7 +75,10 @@ public class VsCon {
 					outstream.close();
 					System.exit(0);
 				}
-
+				else if((inline.startsWith("P111"))) {
+					indtDisp = (inline.substring(5, inline.length()));
+					outstream.writeBytes(indtDisp+"\r\n");
+				}
 
 				else { 
 					printmenu();

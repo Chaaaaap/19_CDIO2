@@ -12,9 +12,9 @@ public class Consumer implements Runnable {
             getChar = cb.get();
             System.out.println("Udtager: " + getChar + " " + cb);
             try {
-            	Thread.sleep(speed);
-            	//Thread.sleep((int) (Math.random() * speed));
-            } catch (InterruptedException e) {
+            	
+            } catch (Exception e) {
+            	
             }
         }
     }
