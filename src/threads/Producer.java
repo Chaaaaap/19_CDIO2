@@ -4,10 +4,10 @@ import cirbuffer.CirBuf;
 
 public class Producer implements Runnable {
     private int speed;
-    private CirBuf theCirBuf;
+    private CirBuf cb;
 
     public Producer(CirBuf buf, int speed) {
-        this.theCirBuf = buf;
+        cb = buf;
         this.speed = speed;
         new Thread(this, "Producer").start();
     }
@@ -15,8 +15,8 @@ public class Producer implements Runnable {
     public void run() {
         char setChar = 'a';
         while (true) {
-            theCirBuf.put(setChar);
-            System.out.println("Indsætter: " + (char)setChar + " " + theCirBuf);
+            cb.put(setChar);
+            System.out.println("Indsætter: " + (char)setChar + " " + cb);
             try {
             	Thread.sleep(speed);
             	//Thread.sleep((int) (Math.random() * speed));
