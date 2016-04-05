@@ -37,10 +37,10 @@ public class VsCon {
 		printmenu();
 		try{
 			while (!(inline = instream.readLine().toUpperCase()).isEmpty()){ //her ventes på input
-				if (inline.startsWith("RM")){						
-					indtDisp=(inline.substring(4, inline.length()));
+				if (inline.startsWith("RM20 8")){						
+					indtDisp=(inline.substring(7, inline.length()));
 					String[] array = indtDisp.split(" ");
-					if(array[0].equals("8") && array.length == 4) {
+					if(array.length == 3) {
 						outstream.writeBytes("RM20 A");
 						
 					} else { 
