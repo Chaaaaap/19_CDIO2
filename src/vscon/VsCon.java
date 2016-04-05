@@ -38,6 +38,7 @@ public class VsCon {
 		instream = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		outstream = new DataOutputStream(sock.getOutputStream());
 		printmenu();
+		
 		try{
 			while (!(inline = instream.readLine().toUpperCase()).isEmpty()){ //her ventes på input
 				if (inline.startsWith("RM20 8")){						
