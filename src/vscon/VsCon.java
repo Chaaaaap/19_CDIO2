@@ -20,6 +20,13 @@ public class VsCon {
 	static boolean rm20flag = false;
 
 	public static void main(String[] args) throws IOException{
+		if(args.length == 1) {
+			try {
+				portdst = Integer.parseInt(args[0]);
+			} catch(Exception e) {
+				//Her sker der ikke noget, men den skal jo catches.
+			}
+		}
 		listener = new ServerSocket(portdst);
 		System.out.println("Venter paa connection på port " + portdst );
 		System.out.println("Indtast eventuel portnummer som 1. argument");
