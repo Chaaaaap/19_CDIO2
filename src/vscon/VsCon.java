@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class VsCon {
 	static ServerSocket listener;
@@ -18,6 +19,7 @@ public class VsCon {
 	static BufferedReader instream;
 	static DataOutputStream outstream;
 	static boolean rm20flag = false;
+	static Scanner scan;
 
 	public static void main(String[] args) throws IOException{
 		if(args.length == 1) {
@@ -28,6 +30,7 @@ public class VsCon {
 			}
 		}
 		listener = new ServerSocket(portdst);
+		scan = new Scanner(System.in);
 		System.out.println("Venter paa connection på port " + portdst );
 		System.out.println("Indtast eventuel portnummer som 1. argument");
 		System.out.println("paa kommando linien for andet portnr");
@@ -41,8 +44,10 @@ public class VsCon {
 					indtDisp=(inline.substring(7, inline.length()));
 					String[] array = indtDisp.split(" ");
 					if(array.length == 3) {
-						outstream.writeBytes("RM20 A");
-						
+						outstream.writeBytes("RM20 A\r\n");
+						System.out.println(array[0]+" "+array[1]+" "+array[2]);
+						System.out.print("Indtast svar: ");
+						outstream.writeBytes("RM20 B "+scan.nextLine()+"\r\n");
 					} else { 
 						printmenu();
 						outstream.writeBytes("ES"+"\r\n");
@@ -84,7 +89,7 @@ public class VsCon {
 				}
 				else if((inline.startsWith("P111"))) {
 					indtDisp = (inline.substring(5, inline.length()));
-					outstream.writeBytes(indtDisp+"\r\n");
+					outstream.writeBytes("A\r\n");
 					printmenu();
 				}
 
