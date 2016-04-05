@@ -31,7 +31,7 @@ public class VsCon {
 		try{
 			while (!(inline = instream.readLine().toUpperCase()).isEmpty()){ //her ventes på input
 				if (inline.startsWith("RM")){						
-					indtDisp=(inline.substring(7, inline.length()));
+					indtDisp=(inline.substring(4, inline.length()));
 					String[] array = indtDisp.split(" ");
 					if(array[0].equals("8") && array.length == 4) {
 						outstream.writeBytes("RM20 A");
@@ -78,6 +78,7 @@ public class VsCon {
 				else if((inline.startsWith("P111"))) {
 					indtDisp = (inline.substring(5, inline.length()));
 					outstream.writeBytes(indtDisp+"\r\n");
+					printmenu();
 				}
 
 				else { 
