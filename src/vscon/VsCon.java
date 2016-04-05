@@ -42,12 +42,12 @@ public class VsCon {
 			while (!(inline = instream.readLine().toUpperCase()).isEmpty()){ //her ventes på input
 				if (inline.startsWith("RM20 8")){						
 					indtDisp=(inline.substring(7, inline.length()));
-					String[] array = indtDisp.split("");
+					String[] array = indtDisp.split("\" \"");
 					if(array.length == 3) {
-						outstream.writeBytes("RM20 A\r\n");
+						outstream.writeBytes("RM20 B\r\n");
 						System.out.println(array[0]+" "+array[1]+" "+array[2]);
 						System.out.print("Indtast svar: ");
-						outstream.writeBytes("RM20 B "+scan.nextLine()+"\r\n");
+						outstream.writeBytes("RM20 A "+scan.nextLine()+"\r\n");
 					} else { 
 						printmenu();
 						outstream.writeBytes("ES"+"\r\n");
@@ -90,7 +90,7 @@ public class VsCon {
 				}
 				else if((inline.startsWith("P111"))) {
 					indtDisp = (inline.substring(5, inline.length()));
-					outstream.writeBytes("A\r\n");
+					outstream.writeBytes("P111 A\r\n");
 					printmenu();
 				}
 
