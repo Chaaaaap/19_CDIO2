@@ -46,6 +46,7 @@ public class VsCon {
 					if(array.length == 3) {
 						outstream.writeBytes("RM20 B\r\n");
 						System.out.println(array[0]+" "+array[1]+" "+array[2]);
+						indtDisp = array[0]+" "+array[1]+" "+array[2];
 						System.out.print("Indtast svar: ");
 						outstream.writeBytes("RM20 A "+scan.nextLine()+"\r\n");
 					} else { 
