@@ -45,6 +45,9 @@ public class VsCon {
 					String[] array = indtDisp.split("\" \"");
 					if(array.length == 3) {
 						outstream.writeBytes("RM20 B\r\n");
+						for (int i = 0; i < array.length; i++) {
+							array[i] = array[i].replaceAll("\"", "");
+						}
 						System.out.println(array[0]+" "+array[1]+" "+array[2]);
 						indtDisp = array[0]+" "+array[1]+" "+array[2];
 						System.out.print("Indtast svar: ");
@@ -61,6 +64,7 @@ public class VsCon {
 						indtDisp="";
 					else
 						indtDisp=(inline.substring(2, inline.length()));//her skal anførselstegn udm.
+					
 					printmenu();
 					outstream.writeBytes("DB"+"\r\n");
 				}
@@ -110,7 +114,7 @@ public class VsCon {
 			System.out.println("                                                 ");
 		System.out.println("*************************************************");
 		System.out.println("Netto: " + (brutto-tara)+ " kg"                   );
-		System.out.println("Instruktionsdisplay: " +  indtDisp    );
+		System.out.println("Instruktionsdisplay: " +  indtDisp.replaceAll("\"", ""));
 		System.out.println("*************************************************");
 		System.out.println("                                                 ");
 		System.out.println("                                                 ");
